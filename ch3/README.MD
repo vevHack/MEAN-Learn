@@ -14,6 +14,7 @@
 
 ### 请求对象
 请求对象包含一些获取当前HTTP请求信息的方法
+
 1. req.query:已解析为对象的所有GET参数
 2. req.params:已解析为对象的路由参数
 3. req.body:该请求包含在bodyParser()中间件中，用于获取所有请求的body部分

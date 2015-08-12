@@ -3,8 +3,6 @@
 ## 2. 闭包
 ## 3. Node模块
 
-
-
 ```
 1. CommonJS模块：require(),exports,module
 
@@ -34,4 +32,10 @@ Expres也是基于Connect的
 Connect可以注册任意的中间件，通过app.use()方法，可以将中间件
 连成一串，将下一个要执行的函数以next参数传给要执行的中间件
 函数，直到end()函数调用，或者是没有调用next函数
+```
+
+### 总结：
+
+```
+初步了解node的一些情况
 ```

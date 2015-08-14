@@ -47,16 +47,36 @@ Replica Set架构，分为活跃节点和被备份节点，副本集内所有的
 - 水平扩展：更多的机器，难度更高
 
 ## MongoDB增删改查
-#### 创建文档
-1. insert创建文档:
-> db.posts.insert({"title":"Second Post", "user": "alice"})
-2. update()创建新文档 ，当文档不存在的时候，采用upsert:
-> db.posts.update({
- "user": "alice"
-}, {
- "title": "Second Post",
- "user": "alice"
-}, {
- upsert: true
-})
-3.
+### 创建文档
+- insert创建文档:
+
+  > db.posts.insert({"title":"Second Post", "user": "alice"})
+
+- update()创建新文档 ，当文档不存在的时候，采用upsert:
+
+  > db.posts.update({
+
+  > "user": "alice"
+
+  > }, {
+
+  > "title": "Second Post",
+
+  > "user": "alice"
+
+  > }, {
+
+  > upsert: true
+
+  > })
+
+- save创建新文档：
+
+  > 当传给它的文档没有_id字段或者_id字段在目前的集合中没有被使用，这个和update方法类似，当找不到的时候，就会创建新的对象
+
+### 读取文档
+- 查询整个集合中的文档，例如查询posts集合中的所有文档
+> db.posts.find()  
+db.posts.find({})
+- 使用等值表达式
+- 使用查询操作符

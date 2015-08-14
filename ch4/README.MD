@@ -45,3 +45,18 @@ Replica Set架构，分为活跃节点和被备份节点，副本集内所有的
 随着WEB的应用增加，可拓展性是必然面对的问题。解决这种问题的思路分为两种，水平扩展和垂直扩展。
 - 垂直扩展：更多的CPU,更大的硬盘，更多的内存
 - 水平扩展：更多的机器，难度更高
+
+## MongoDB增删改查
+#### 创建文档
+1. insert创建文档:
+> db.posts.insert({"title":"Second Post", "user": "alice"})
+2. update()创建新文档 ，当文档不存在的时候，采用upsert:
+> db.posts.update({
+ "user": "alice"
+}, {
+ "title": "Second Post",
+ "user": "alice"
+}, {
+ upsert: true
+})
+3.

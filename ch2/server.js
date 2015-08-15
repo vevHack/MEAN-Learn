@@ -2,7 +2,7 @@ var connect = require('connect');
 var app = connect();
 
 var logger = function (req, res, next) {
-	console.log(req.method,req.url);
+	console.log(req.method, req.url);
 	next();
 }
 

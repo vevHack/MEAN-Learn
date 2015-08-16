@@ -1,5 +1,5 @@
 module.exports = {
-    db:'mongodb://locahost/mean-learn',
+    db: 'mongodb://localhost/mean-learn',
+    sessionSecret: 'developmentSessionSecret'
+};
 
-    
-}

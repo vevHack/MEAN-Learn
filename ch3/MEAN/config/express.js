@@ -1,4 +1,4 @@
-var config = require('./config')
+var config = require('./config');
 var express = require('express');
 var morgan = require('morgan');
 var compress = require('compression');
@@ -27,6 +27,6 @@ module.exports = function () {
 	app.set('view engine', 'ejs');
 	require('../app/routes/index.server.routes.js')(app);
 
-	app.use(express.static('./public'))
+	app.use(express.static('./public'));
 	return app;
-}
+};

@@ -76,7 +76,61 @@ Replica Set架构，分为活跃节点和被备份节点，副本集内所有的
 
 ### 读取文档
 - 查询整个集合中的文档，例如查询posts集合中的所有文档
-> db.posts.find()  
-db.posts.find({})
+
+  > db.posts.find()  
+
+  > db.posts.find({})
+
 - 使用等值表达式
+
+  > db.posts.find({"user":"alice"})
+
 - 使用查询操作符
+
+  > 多个查询操作符满足复杂的查询，比如$in操作。  
+
+  > db.posts.find({"user":{$in:["alice","bob"]}})
+
+- 创建AND/OR查询
+  - AND:
+
+    > db.posts.find({"user":"alice","commentsCount":{$gt:10}})
+
+  - OR:
+
+    > db.posts.find({$or:[{"user":"alice"},{"user":"bob"}]})
+
+### 更新已有的文档
+既可以使用update,又可以使用save方法
+- update()更新
+
+  > db.posts.update({"user":"alice"},{$set:{"title":"Second Post"},{multi:true}})  
+
+  > update()方法默认是更新单个，但是设置了multi属性可以更新所有符合条件的数据
+
+- save()更新
+
+  传入的参数必须包含_id字段
+
+  > db.posts.save({"_id":ObjectId("50691737d386d8fadbd6b01d")
+
+  > ,"title":"Second Post","user":"alice"})
+
+### 删除文档
+remove方法，第一个参数是删除条件，第二个参数是删除单个还是所有满足条件的
+- 删除所有文档，remove是删除集合内的所有文档，而drop是删除整个集合，包括索引
+
+  > db.posts.remove()
+
+- 删除多个文档
+
+  > db.posts.remove({"user":"alice"})
+
+- 删除单个文档,只删除第一个符合条件的文档
+
+  > db.posts.remove({"user":"alice"},true)
+
+--------------------------------------------------------------------------------
+
+## 总结
+大体介绍了MongoDB的开发，需要深入再详细的研究，但是起码心里有个大概
